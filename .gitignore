@@ -2,21 +2,21 @@
 terraform/.terraform/*
 
 # Ignore variables files
-*.auto.tfvars
+terraform/*.auto.tfvars
 
 # Ignore override files
-*.tfoverride
+terraform/*.tfoverride
 
 # Ignore environment-specific files
-.envrc
+terraform/.envrc
 
 # Ignore terraform tf files
-terraform.*
+terraform/terraform.*
 
 
 # ignore privateIp File
-privateIps.txt
+terraform/privateIps.txt
 
 # Ignore CLI configuration files
-.terraformrc
-terraform.rc
+terraform/.terraformrc
+terraform/terraform.rc
