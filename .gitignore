@@ -31,3 +31,6 @@ terraform/*.swp
 
 # Ignore Idea folder
 .idea
+
+#Ignore private Ip folder
+terraform/privateIps.txt
