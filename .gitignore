@@ -15,7 +15,7 @@ terraform/*.plan
 # Ignore .tfvars files containing sensitive information
 terraform/*.auto.tfvars
 terraform/*.auto.tfvars.json
-terraform/*.tfvars
+terraform/terraform.tfvars
 
 # Ignore .terraformrc or terraform.rc file containing provider credentials
 terraform/.terraformrc
@@ -28,3 +28,6 @@ terraform/.env
 terraform/*.log
 terraform/*.out
 terraform/*.swp
+
+# Ignore Idea folder
+.idea
