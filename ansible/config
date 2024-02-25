@@ -1,0 +1,28 @@
+Host *
+	ForwardAgent yes
+
+Host vm_1
+  Hostname 18.234.59.42 
+  User ubuntu
+  Port 22
+  IdentityFile /home/tharindu-107455/.ssh/id_rsa.pub # The name of the jumphost
+
+# Public IP address of the vm1
+# SSH username for the vm1
+# SSH port for the vm1
+# The SSH private key file to the vm1
+Host vm_2
+  Hostname 10.0.11.137
+  User ubuntu
+  ProxyJump vm_1 # The name of the 2st virtual machine in a private network
+  IdentityFile /home/tharindu-107455/.ssh/id_rsa.pub
+Host vm_3
+  Hostname 10.0.12.205
+  User ubuntu
+  ProxyJump vm_1 # The name of the 2nd virtual machine in a private network
+  IdentityFile /home/tharindu-107455/.ssh/id_rsa.pub
+Host vm_4
+  Hostname 10.0.13.222
+  User ubuntu
+  ProxyJump vm_1 # The name of the 3rd virtual machine in a private network
+  IdentityFile /home/tharindu-107455/.ssh/id_rsa.pub

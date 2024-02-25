@@ -1,0 +1,46 @@
+---
+
+- name: Install nginx in all servers
+  hosts: all
+  become: True
+  tasks:
+    - name: Ensure nginx is installed
+      package: name=nginx update_cache=yes
+
+- name: Configure loadbalancer on vm1
+  hosts: nginx_server
+  become: True
+  tasks:
+    - name: Copy nginx config file
+      copy:
+        src: nginx_proxy.conf
+        dest: /etc/nginx/nginx.conf
+
+
+    - name: Restart nginx
+      service: name=nginx state=restarted
+
+
+- name: Configure webserver on othervms
+  hosts: web_servers
+  become: True
+  tasks:
+    - name: Copy nginx config file
+      copy:
+        src: nginx.conf
+        dest: /etc/nginx/sites-available/default
+
+    - name: Enable configuration
+      file: >
+        dest=/etc/nginx/sites-enabled/default
+        src=/etc/nginx/sites-available/default
+        state=link
+
+    - name: Copy index.html
+      template: >
+        src=index.html.j2
+        dest=/usr/share/nginx/html/index.html
+
+
+    - name: Restart nginx
+      service: name=nginx state=restarted
