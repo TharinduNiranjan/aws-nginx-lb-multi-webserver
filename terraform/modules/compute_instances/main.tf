@@ -32,7 +32,7 @@ resource "aws_launch_template" "web_servers_launch_tmp" {
 
 resource "aws_autoscaling_group" "web_servers_asg" {
   name                = "web_servers_asg"
-  vpc_zone_identifier = tolist(var.public_subnet)
+  vpc_zone_identifier = tolist(var.private_subnet)
   min_size            = 3
   max_size            = 3
   desired_capacity    = 3
